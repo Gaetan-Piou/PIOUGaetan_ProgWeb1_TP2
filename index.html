@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+	
+	<!-- En-tête de la page -->
+	
+	<head>
+		<title>Quiz Prog Web</title>
+		<meta charset="utf-8"/>
+		<style >
+			@font-face {
+			    font-family: 'cac_champagneregular';
+			    src: url('./Polices/cac_champagne-webfont.eot');
+			    src: url('./Polices/cac_champagne-webfont.eot?#iefix') format('embedded-opentype'),
+			         url('./Polices/cac_champagne-webfont.woff2') format('woff2'),
+			         url('./Polices/cac_champagne-webfont.woff') format('woff'),
+			         url('./Polices/cac_champagne-webfont.ttf') format('truetype'),
+			         url('./Polices/cac_champagne-webfont.svg#cac_champagneregular') format('svg');
+			    font-weight: normal;
+			    font-style: normal;
+			
+			}
+			
+			
+			
+			body {
+				text-align: center;
+				color: #FFFFFF;
+				background: url(https://media.tenor.com/pPKOYQpTO8AAAAAM/monkey-developer.gif) no-repeat center fixed;
+				background-size: 100% 100%;
+				font-family: 'cac_champagneregular';
+				font-weight: normal;
+			}
+			
+			.obligatoire:placeholder-shown {
+				color: #FF0000;
+				border-color: #FF0000;
+			}
+
+			fieldset {
+				background: #222;
+				margin: 15%;
+			}
+
+			.success {
+				background: url(https://media.tenor.com/r-VgiVyo-RUAAAAM/monkey-flip.gif);
+				padding: 15%;
+			}
+
+			.goodAnswer:checked ~ label {
+				color: green;
+			}
+
+			.badAnswer:checked ~ label {
+				color: red;
+			}
+
+			#mail:invalid {
+				background: #FAA;
+			}
+
+			#date:invalid {
+				background: #FAA;
+			}
+
+			textarea {
+				width: 75%;
+				height: 15em;
+			}
+
+
+
+
+		</style>
+
+	</head>
+
+
+	<!--Corps de la page-->
+	
+	<body>
+		
+		<!-- En-tête de la page -->
+		<header>
+			
+		</header>
+
+
+		<!-- Titre principal -->
+		<h1>
+			Formulaire à remplir
+		</h1>
+
+		<form name="monform" id="monform" action="#" method="get">
+			<fieldset>
+				<legend>Informations de base</legend>	
+				<label>Nom : <input type="text" name="nom" placeholder="Entrez votre nom" maxlength="20" class="obligatoire" required=""></label><br>
+				<label>Prénom : <input type="text" name="prenom" placeholder="Entrez votre prénom" maxlength="20" class="obligatoire" required=""></label><br>
+				<label>Mail : <input type="email" name="email" placeholder="exemple@gmail.com" required="" maxlength="35" class="obligatoire" id="mail"></label><br>
+				<br>
+				<label>Date du quizz : <input type="date" name="ddn" class="obligatoire" id="date" required=""></label><br>
+			</fieldset>
+			<fieldset>
+				<legend>Comment fait-on pour réussir un TP de Web</legend>
+				<div><input type="radio" name="question1" value="design" id="r1" class="badAnswer" required=""><label for="r1">On produit une page web qualitative, avec un design épuré</label></div>
+				<div><input type="radio" name="question1" value="cours" id="r2" class="badAnswer" required=""><label for="r2">On crée une page expliquant ce que l'on a compris du cours</label></div>
+				<div><input type="radio" name="question1" value="random" class="goodAnswer" id="r3" required=""><label for="r3">On met plein de balises</label></div>
+				<div><input type="radio" name="question1" value="D" id="r4" class="badAnswer" required=""><label for="r4">La réponse D </label></div>
+			</fieldset>
+			<fieldset>
+				<legend>Quels langages sont utilisés dans le web ?</legend>
+				<div><input type="checkbox" name="langprog" id="b1" value="html" class="goodAnswer"> <label for="b1">HTML</label></div>
+				<div><input type="checkbox" name="langprog" id="b2" value="python" class="badAnswer"> <label for="b2">Python</label></div>
+				<div><input type="checkbox" name="langprog" id="b3" value="css" class="goodAnswer"> <label for="b3">CSS</label></div>
+				<div><input type="checkbox" name="langprog" id="b4" value="c#" class="badAnswer"> <label for="b4">C#</label></div>
+				<div><input type="checkbox" name="langprog" id="b5" value="haskell" class="badAnswer"> <label for="b5">HASKELL</label></div>
+				<div><input type="checkbox" name="langprog" id="b6" value="js" class="goodAnswer"> <label for="b6">JavaScript</label></div>
+				<div><input type="checkbox" name="langprog" id="b7" value="php" class="goodAnswer"> <label for="b7">PHP</label></div>
+				<div><input type="checkbox" name="langprog" id="b8" value="formel" class="badAnswer"> <label for="b8">Le langage formel</label></div>
+			</fieldset>
+			<fieldset>
+				<legend>Où apprendre les langages de programmation web ?</legend>
+				<select name="diplome" required="">
+					<option value="0">Faites vos choix</option>
+					<option value="1">Seul, pas besoin d'enseignant</option>
+					<option value="2">À l'UFR de Math-Info</option>
+					<option value="3">En école privée ultra chère qui va fermer dans 3 ans</option>
+					<option value="4">Au LANSAD, c'est là qu'on apprend les langues</option>
+				</select><br>
+			</fieldset>
+			<fieldset>
+				<legend>Entrez votre code HTML</legend>
+				<textarea name="Kode" placeholder="Entrez du code HTML/CSS ici"></textarea>
+			</fieldset>
+			<fieldset class="success">
+				<input type="submit" name="bouton" value="envoyer" id="sub"><br>
+				<input type="reset" name="annuler" value="annuler"><br>
+				<input type="reset" name="effacer" value="effacer"><br>
+			</fieldset>
+		</form>
+
+
+	</body>
+
+</html>
