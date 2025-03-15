@@ -6,6 +6,7 @@
 	<head>
 		<title>Quiz Prog Web</title>
 		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style >
 			@font-face {
 			    font-family: 'cac_champagneregular';
@@ -27,8 +28,13 @@
 				color: #FFFFFF;
 				background: url(https://media.tenor.com/pPKOYQpTO8AAAAAM/monkey-developer.gif) no-repeat center fixed;
 				background-size: 100% 100%;
-				font-family: 'cac_champagneregular';
+				font-family: Rubik;
+				font-size: 0.9em;
 				font-weight: normal;
+			}
+
+			input, button {
+				font-family: Rubik;
 			}
 			
 			.obligatoire:placeholder-shown {
@@ -39,6 +45,13 @@
 			fieldset {
 				background: #222;
 				margin: 15%;
+				border: 5px dotted steelblue;
+				border-radius: 50px;
+			}
+
+			textarea {
+				background: #000;
+				color: #0F0;
 			}
 
 			.success {
@@ -54,6 +67,14 @@
 				color: red;
 			}
 
+			input[required]:invalid {
+				border:5px red double;
+			}
+			
+			input[required]:valid {
+				border:3px #0F0 solid;
+			}
+
 			#mail:invalid {
 				background: #FAA;
 			}
@@ -65,6 +86,21 @@
 			textarea {
 				width: 75%;
 				height: 15em;
+			}
+
+			.separ {
+				display: inline-block;
+				width:8em;
+			}
+
+			select {
+				margin-bottom: 50px;
+			}
+
+			input[type="submit"] {
+				width: 50%;
+				font-size: 3em;
+				color: #0E4;
 			}
 
 
@@ -90,14 +126,16 @@
 			Formulaire à remplir
 		</h1>
 
-		<form name="monform" id="monform" action="#" method="get">
+		<form name="monform" id="monform" action="#" method="get" oninput="result.value=note.value">
 			<fieldset>
 				<legend>Informations de base</legend>	
-				<label>Nom : <input type="text" name="nom" placeholder="Entrez votre nom" maxlength="20" class="obligatoire" required=""></label><br>
-				<label>Prénom : <input type="text" name="prenom" placeholder="Entrez votre prénom" maxlength="20" class="obligatoire" required=""></label><br>
-				<label>Mail : <input type="email" name="email" placeholder="exemple@gmail.com" required="" maxlength="35" class="obligatoire" id="mail"></label><br>
+				<label><span class="separ">Nom :</span><input type="text" name="nom" placeholder="Entrez votre nom" maxlength="20" class="obligatoire" required=""></label><br>
+				<label><span class="separ">Prénom :</span><input type="text" name="prenom" placeholder="Entrez votre prénom" maxlength="20" class="obligatoire" required=""></label><br>
+				<label><span class="separ">Mail :</span><input type="email" name="email" placeholder="exemple@gmail.com" required="" maxlength="35" class="obligatoire" id="mail"></label><br>
+				<label><span class="separ">Mot de passe :</span><input type="password" name="mdp" required></label><br>
+				<label><span class="separ">Telephone :</span><input type="tel" name="phone" required></label><br>
 				<br>
-				<label>Date du quizz : <input type="date" name="ddn" class="obligatoire" id="date" required=""></label><br>
+				<label><span class="separ">Date du quizz :</span><input type="date" name="ddn" class="obligatoire" id="date" required=""></label><br>
 			</fieldset>
 			<fieldset>
 				<legend>Comment fait-on pour réussir un TP de Web</legend>
@@ -108,28 +146,36 @@
 			</fieldset>
 			<fieldset>
 				<legend>Quels langages sont utilisés dans le web ?</legend>
-				<div><input type="checkbox" name="langprog" id="b1" value="html" class="goodAnswer"> <label for="b1">HTML</label></div>
-				<div><input type="checkbox" name="langprog" id="b2" value="python" class="badAnswer"> <label for="b2">Python</label></div>
-				<div><input type="checkbox" name="langprog" id="b3" value="css" class="goodAnswer"> <label for="b3">CSS</label></div>
-				<div><input type="checkbox" name="langprog" id="b4" value="c#" class="badAnswer"> <label for="b4">C#</label></div>
-				<div><input type="checkbox" name="langprog" id="b5" value="haskell" class="badAnswer"> <label for="b5">HASKELL</label></div>
-				<div><input type="checkbox" name="langprog" id="b6" value="js" class="goodAnswer"> <label for="b6">JavaScript</label></div>
-				<div><input type="checkbox" name="langprog" id="b7" value="php" class="goodAnswer"> <label for="b7">PHP</label></div>
-				<div><input type="checkbox" name="langprog" id="b8" value="formel" class="badAnswer"> <label for="b8">Le langage formel</label></div>
+				<div><input type="checkbox" name="langprog[]" id="b1" value="html" class="goodAnswer"> <label for="b1">HTML</label></div>
+				<div><input type="checkbox" name="langprog[]" id="b2" value="python" class="badAnswer"> <label for="b2">Python</label></div>
+				<div><input type="checkbox" name="langprog[]" id="b3" value="css" class="goodAnswer"> <label for="b3">CSS</label></div>
+				<div><input type="checkbox" name="langprog[]" id="b4" value="c#" class="badAnswer"> <label for="b4">C#</label></div>
+				<div><input type="checkbox" name="langprog[]" id="b5" value="haskell" class="badAnswer"> <label for="b5">HASKELL</label></div>
+				<div><input type="checkbox" name="langprog[]" id="b6" value="js" class="goodAnswer"> <label for="b6">JavaScript</label></div>
+				<div><input type="checkbox" name="langprog[]" id="b7" value="php" class="goodAnswer"> <label for="b7">PHP</label></div>
+				<div><input type="checkbox" name="langprog[]" id="b8" value="formel" class="badAnswer"> <label for="b8">Le langage formel</label></div>
 			</fieldset>
 			<fieldset>
 				<legend>Où apprendre les langages de programmation web ?</legend>
 				<select name="diplome" required="">
-					<option value="0">Faites vos choix</option>
-					<option value="1">Seul, pas besoin d'enseignant</option>
-					<option value="2">À l'UFR de Math-Info</option>
-					<option value="3">En école privée ultra chère qui va fermer dans 3 ans</option>
-					<option value="4">Au LANSAD, c'est là qu'on apprend les langues</option>
+					<optgroup label="Choisissez une reponse">
+						<option value="1">Seul, pas besoin d'enseignant</option>
+						<option value="2">À l'UFR de Math-Info</option>
+						<option value="3">En école privée ultra chère qui va fermer dans 3 ans</option>
+						<option value="4">Au LANSAD, c'est là qu'on apprend les langues</option>
+					</optgroup>
+				</select><br>
+
+				<select name="yarien" disabled>
+					<optgroup label="Y rien">
+						<option value="0">Y a rien</option>
+					</optgroup>
 				</select><br>
 			</fieldset>
 			<fieldset>
 				<legend>Entrez votre code HTML</legend>
-				<textarea name="Kode" placeholder="Entrez du code HTML/CSS ici"></textarea>
+				<textarea name="Kode" placeholder="Entrez du code HTML/CSS ici"></textarea><br>
+				<label><span class="separ">Quel note lui donnez-vous ?</span><input type="range" name="note" min="0" max="20" value="10"><output class="separ" for="note" name="result">10</output></label>
 			</fieldset>
 			<fieldset class="success">
 				<input type="submit" name="bouton" value="envoyer" id="sub"><br>
